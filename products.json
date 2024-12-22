@@ -8,5 +8,5 @@
     {"name": "Tablet G", "price": 7000, "rating": 4.4},
     {"name": "Smartwatch H", "price": 1500, "rating": 4.8},
     {"name": "Camera I", "price": 4500, "rating": 4.6},
-    {"name": "Speaker J", "price": 1000, "rating": 4.0}
+    {"name": "Speaker J", "price": 900, "rating": 4.0}
 ]

@@ -20,17 +20,26 @@ def read_json(filename):
 
 
 def binary_search(data, target):
-    ans = []
+    target = float(target)
     try:
+        ans = []
         data.sort(key=lambda x: x.price)
-        for product in data:
-            if product.price <= target:
-                ans.append([product.name, product.price, product.rating])
+        st = 0
+        en = len(data) - 1
+        while st <= en:
+            mid = (en + st) // 2
+            if data[mid].price == target:
+                ans.append({
+                    "name": data[mid].name,
+                    "rating": data[mid].rating,
+                    "price": data[mid].price
+                })
+                return ans
+            elif data[mid].price < target:
+                st = mid + 1
             else:
-                break
-        print(ans)
-
-
+                en = mid - 1
+        return ans
     except:
         pass
 
