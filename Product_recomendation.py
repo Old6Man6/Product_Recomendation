@@ -7,6 +7,13 @@ class Product:
         self.rating = rating
 
 
+    """ We can add a function to change value formats if we need acctualy in price """
+    # def Fix_Price(self, price):
+    #     try:
+    #       pass
+    #         return float(price)
+    #     except Exception as e:
+    #         return print(f"Error in FixingPrice: {e}")
 def read_json(filename):
     products = []
     try:
@@ -15,13 +22,12 @@ def read_json(filename):
                 products.append(Product(p['name'], p['price'], p['rating']))
             return products
     except FileNotFoundError as e:
-        print(f"Error reading file: {e}")
+        print(f"Error in reading file: {e}")
         return []
 
 
 
 def binary_search(data, target, op):
-    target = float(target)
     try:
         ans = []
         data.sort(key=lambda x: x.price)
@@ -31,7 +37,7 @@ def binary_search(data, target, op):
             mid = (en + st) // 2
             if op == "yes":
 
-                if data[mid].price >= target:
+                if data[mid].price == target:
                     ans2 = []
                     for i in range(0, mid):
                         ans2.append({
@@ -64,6 +70,6 @@ def binary_search(data, target, op):
 
 if __name__ == '__main__':
     op_low = str(input("OP_LOW (it's sample it must change) type yes: "))
-    target = int(input('Enter a number: '))
+    target = float(input('Enter a number: '))
     data = read_json('products.json')
     binary_search(data=data, target=target, op=op_low)
