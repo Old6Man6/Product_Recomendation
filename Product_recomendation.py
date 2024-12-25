@@ -19,7 +19,7 @@ def read_json(filename):
 
 
 
-def binary_search(data, target):
+def binary_search(data, target, op):
     target = float(target)
     try:
         ans = []
@@ -28,18 +28,30 @@ def binary_search(data, target):
         en = len(data) - 1
         while st <= en:
             mid = (en + st) // 2
+            if op == "yes":
+
+                if data[mid].price >= target:
+                    ans2 = []
+                    for i in range(0, mid):
+                        ans2.append({
+                            "name": data[i].name,
+                            "rating": data[i].rating,
+                            "price": data[i].price
+                        })
+
+                    return print(ans2)
             if data[mid].price == target:
                 ans.append({
                     "name": data[mid].name,
                     "rating": data[mid].rating,
                     "price": data[mid].price
                 })
-                return ans
+                return print(ans)
             elif data[mid].price < target:
                 st = mid + 1
             else:
                 en = mid - 1
-        return ans
+        return None
     except:
         pass
 
@@ -50,6 +62,7 @@ def binary_search(data, target):
 
 
 if __name__ == '__main__':
+    op_low = str(input("OP_LOW (it's sample it must change) type yes: "))
     target = int(input('Enter a number: '))
     data = read_json('products.json')
-    binary_search(data=data, target=target)
+    binary_search(data=data, target=target, op=op_low)
