@@ -14,8 +14,9 @@ def read_json(filename):
             for p in json.load(file):
                 products.append(Product(p['name'], p['price'], p['rating']))
             return products
-    except:
-        pass
+    except FileNotFoundError as e:
+        print(f"Error reading file: {e}")
+        return []
 
 
 
@@ -52,8 +53,8 @@ def binary_search(data, target, op):
             else:
                 en = mid - 1
         return None
-    except:
-        pass
+    except Exception as e:
+        print(f"Error in binary search: {e}")
 
 
 
